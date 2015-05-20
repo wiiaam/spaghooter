@@ -3,15 +3,13 @@ from time import time
 
 # NORMIES GET OUT
 def rreee(phenny, input):
-	if input.admin:
-		phenny.say("4RRRRRRREEEEEEEEEEEEEEEEEEEEEEE")
+	phenny.say("4RRRRRRREEEEEEEEEEEEEEEEEEEEEEE")
 rreee.commands = ['normiesgetout', 'rreee', 'pepe']
 rreee.priority = 'medium'
 
 # ULEH ULEH ULEH ULEH ULEH ULEH
 def uleh(phenny, input):
-	if input.admin:
-		phenny.say("4ULEH ULEH ULEH ULEH ULEH ULEH ")
+	phenny.say("4ULEH ULEH ULEH ULEH ULEH ULEH ")
 uleh.commands = ['uleh']
 uleh.priority = 'medium'
 

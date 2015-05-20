@@ -2,10 +2,11 @@ import random
 from time import time
 
 def spaghetti(phenny, input):
-	try:
-		if time() < timeout and input.sender == "#/g/technology": return
-	except:
-		globals()["timeout"] = time()
+	# Cancel if timeout hasn't ended yet and handle exceptions
+	if input.admin == False:
+		try:
+			if time() < globals().get(input.sender + "timeout") or time() < globals().get(input.nick + "nicktimeout"): return
+		except: pass
 
 	spaghetti = ["... mom's spaghetti ...",
 	"His palms spaghetti,",
@@ -78,7 +79,10 @@ def spaghetti(phenny, input):
 	"Do not miss your chance to blow",
 	"'Cause spaghetti comes once in a lifetime, yo",
 	"Mom's spaghetti can do anything, man"]
-	phenny.say("8\"" + random.choice(spaghetti) + "\"")
-	globals()["timeout"] = time() + 45
+
+	# Set channel and user timeout
+	globals()[input.sender + "timeout"] = time() + 8
+	globals()[input.nick + "nicktimeout"] = time() + 30
+
 spaghetti.commands = ['spaghetti']
 spaghetti.priority = 'medium'

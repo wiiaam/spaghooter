@@ -16,7 +16,7 @@ def sleave(phenny, input):
 				phenny.write(['PART'], '#' + input.group(2))
 		else:
 			phenny.write(['PART'], input.sender)
-sjoin.commands = ['sjoin']
+sjoin.commands = ['sjoin', 's-join']
 sjoin.priority = 'medium'
-sleave.commands = ['sleave']
+sleave.commands = ['sleave', 'spart', 's-leave', 's-part']
 sleave.priority = 'medium'

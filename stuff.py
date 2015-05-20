@@ -29,12 +29,10 @@ def intensify(phenny, input):
 	except:
 		phenny.say("4[NONETYPE ERROR INTENSIFIES]")
 
-	if input.sender == "#/g/technology":
-		globals()[input.sender + "timeout"] = time() + 240
-		globals()[input.nick + "nicktimeout"] = time() + 240
-	else:
-		globals()[input.sender + "timeout"] = time() + 8
-		globals()[input.nick + "nicktimeout"] = time() + 30
+	# Set channel and user timeout
+	globals()[input.sender + "timeout"] = time() + 8
+	globals()[input.nick + "nicktimeout"] = time() + 30
+	
 intensify.commands = ['intensify', 'int']
 intensify.priority = 'medium'
 

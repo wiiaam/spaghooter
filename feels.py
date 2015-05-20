@@ -131,13 +131,9 @@ def feel(phenny, input):
 		# There was an error finding the feel
 		phenny.say("404 Feel not Found")
 
-	# Set the timeout to be 8 seconds from now or longer if in #/g/technology
-	if input.sender == "#/g/technology":
-		globals()[input.sender + "timeout"] = time() + 240
-		globals()[input.nick + "nicktimeout"] = time() + 240
-	else:
-		globals()[input.sender + "timeout"] = time() + 8
-		globals()[input.nick + "nicktimeout"] = time() + 30
+	# Set channel and user timeout
+	globals()[input.sender + "timeout"] = time() + 8
+	globals()[input.nick + "nicktimeout"] = time() + 30
 
 feel.commands = ['feels', 'feel', 'tfw']
 feel.priority = 'low'

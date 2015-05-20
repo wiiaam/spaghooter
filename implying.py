@@ -128,7 +128,7 @@ def imply(phenny, input):
 		phenny.say('3>' + str(implication))
 	except:
 		# There was an error finding the implication
-		phenny.say("3>implying error")
+		phenny.say("3>implying there is no error")
 
 	# Set channel and user timeout
 	globals()[input.sender + "timeout"] = time() + 8

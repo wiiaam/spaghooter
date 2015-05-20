@@ -1,7 +1,7 @@
 # Join and leave channels
 def sjoin(phenny, input):
 		if "," in input.group(2):
-			phenny.say('no')
+			phenny.reply('no')
 			return
 		if "#" in input.group(2):
 			phenny.write(['JOIN'], input.group(2))

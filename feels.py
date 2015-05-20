@@ -128,7 +128,7 @@ def feel(phenny, input):
 
 		# output the feel
 		phenny.say('3>' + str(feel))
-	except NameError:
+	except:
 		# There was an error finding the feel
 		phenny.say("404 Feel not Found")
 

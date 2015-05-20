@@ -17,22 +17,11 @@ uleh.priority = 'medium'
 
 # INTENSIFY
 def intensify(phenny, input):
-	# Cancel if timeout hasn't ended yet and handle exceptions
-	if input.admin == False:
-		try:
-			if time() < globals().get(input.sender + "timeout") or time() < globals().get(input.nick + "nicktimeout"): return
-		except: pass
-
-	# INTENSIFY
 	try:
 		phenny.say("4[%s INTENSIFIES]" % input.group(2).upper())
 	except:
 		phenny.say("4[NONETYPE ERROR INTENSIFIES]")
 
-	# Set channel and user timeout
-	globals()[input.sender + "timeout"] = time() + 8
-	globals()[input.nick + "nicktimeout"] = time() + 30
-	
 intensify.commands = ['intensify', 'int']
 intensify.priority = 'medium'
 

@@ -94,11 +94,12 @@ def get_feels(board = "r9k", chan = "4chan"):
 			posts_json = get_posts(thread, board, chan)
 			for post in posts_json["posts"]:
 				try:
-					clean_post = html_parser.unescape(post["com"])
+					clean_post = html_parser.unescape(post["com"]).encode('ascii', 'ignore')
 				except:
 					continue
 				new_feels = find_feels(clean_post)
 				feels += new_feels
+	# feels = unicode(feels, 'utf-8', 'replace')
 	return feels
 
 def feel(phenny, input):
@@ -127,7 +128,7 @@ def feel(phenny, input):
 
 		# output the feel
 		phenny.say('3>' + str(feel))
-	except:
+	except NameError:
 		# There was an error finding the feel
 		phenny.say("404 Feel not Found")
 

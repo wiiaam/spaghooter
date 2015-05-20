@@ -93,7 +93,7 @@ def get_implications(board = "g", chan = "4chan"):
 			posts_json = get_posts(thread, board, chan)
 			for post in posts_json["posts"]:
 				try:
-					clean_post = html_parser.unescape(post["com"])
+					clean_post = html_parser.unescape(post["com"]).encode('ascii', 'ignore')
 				except:
 					continue
 				new_implications = find_implications(clean_post)

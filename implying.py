@@ -116,16 +116,16 @@ def imply(phenny, input):
 			# if more than one param is given
 			if len(inputArray) > 1:
 				# get implication from board=param1 chan=param2
-				implications = random.choice(globals().get(inputArray[0] + inputArray[1] + "implications"))
+				implication = random.choice(globals().get(inputArray[0] + inputArray[1] + "implications"))
 			else:
 				# get implication from board=param1 chan=4chan
-				implications = random.choice(globals().get(inputArray[0] + "4chanimplications"))
+				implication = random.choice(globals().get(inputArray[0] + "4chanimplications"))
 		else:
 			# get implication from board=r9k chan=4chan
-			implications = random.choice(r9k4chanimplications)
+			implication = random.choice(r9k4chanimplications)
 
 		# output the implication
-		phenny.say('3>' + str(implications))
+		phenny.say('3>' + str(implication))
 	except:
 		# There was an error finding the implication
 		phenny.say("3>implying error")

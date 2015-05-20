@@ -45,7 +45,7 @@ tip.priority = 'medium'
 
 # Be triggered
 def sauce(phenny, input):
-	phenny.say('https://github.com/installgen2/spaghooter')
+	phenny.reply('https://github.com/installgen2/spaghooter')
 sauce.commands = ['sauce']
 sauce.priority = 'medium'
 

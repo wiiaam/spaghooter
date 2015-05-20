@@ -44,6 +44,12 @@ tip.commands = ['tip']
 tip.priority = 'medium'
 
 # Be triggered
+def sauce(phenny, input):
+	phenny.say('https://github.com/installgen2/spaghooter')
+sauce.commands = ['sauce']
+sauce.priority = 'medium'
+
+# Be triggered
 def trigger(phenny, input):
 	phenny.say('TRIGGERED')
 trigger.commands = ['trigger']

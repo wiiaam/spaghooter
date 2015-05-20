@@ -2,7 +2,7 @@ import random
 from time import time
 
 def spaghetti(phenny, input):
-	# Cancel if timeout hasn't ended yet and handle exceptions
+	# Cancel if timeout hasn't ended yet and ignore exceptions
 	if input.admin == False:
 		try:
 			if time() < globals().get(input.sender + "timeout") or time() < globals().get(input.nick + "nicktimeout"): return

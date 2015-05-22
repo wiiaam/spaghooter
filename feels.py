@@ -101,13 +101,9 @@ def get_feels(board = "r9k", chan = "4chan"):
 					continue
 				new_feels = find_feels(clean_post)
 				feels += new_feels
-	# feels = unicode(feels, 'utf-8', 'replace')
 	return feels
 
 
-
-	global refeeling
-	refeeling = False
 
 def feel(phenny, input):
 	# Cancel if timeout hasn't ended yet and ignore exceptions
@@ -117,9 +113,11 @@ def feel(phenny, input):
 		except: pass
 
 	# Cancel if re-feeling not done
-	if refeeling == True:
-		phenny.say("Still re-feeling, please wait.")
-		return
+	try:
+		if refeeling == True:
+			phenny.say("Still re-feeling, please wait.")
+			return
+	except: pass
 
 	# Actual feel outputting
 	try:

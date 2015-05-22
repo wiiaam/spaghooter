@@ -60,3 +60,13 @@ def interject(phenny, input):
 	phenny.say("I'd just like to interject for a moment. What you're referring to as Linux, is in fact, GNU/Linux, or as I've recently taken to calling it, GNU plus Linux.")
 interject.commands = ['interject']
 interject.priority = 'medium'
+
+# Hopefully kill Cumbot whenever he fixed himself
+def cumbot(phenny, input):
+	if input.sender != "#pasta": return
+	if input.nick != "Combot": return
+
+	phenny.write(['MSG'], "#pasta .ub installgen2")
+
+cumbot.event = 'JOIN'
+cumbot.rule = r'.*'

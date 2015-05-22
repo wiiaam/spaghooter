@@ -105,6 +105,7 @@ def get_implications(board = "g", chan = "4chan"):
 
 
 	refeeling = False
+	global refeeling
 
 def imply(phenny, input):
 	# Cancel if timeout hasn't ended yet and ignore exceptions
@@ -115,7 +116,7 @@ def imply(phenny, input):
 
 	# Cancel if re-feeling not done
 	if refeeling == True:
-		phenny.say("Still re-feeling, please wait.")
+		phenny.say("Still re-implying, please wait.")
 		return
 
 	# Actual implication outputting
@@ -154,10 +155,10 @@ def reimply(phenny, input):
 
 	# Cancel if re-feeling
 	if refeeling == True:
-		phenny.say("Already re-feeling!")
+		phenny.say("Already re-implying!")
 		return
 	# Set refeeling status to be true
-	globals()[refeeling] = True
+	reimplying = True
 
 	# if parameters are given
 	if input.group(2):

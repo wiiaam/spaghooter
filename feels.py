@@ -111,6 +111,11 @@ def feel(phenny, input):
 			if time() < globals().get(input.sender + "timeout") or time() < globals().get(input.nick + "nicktimeout"): return
 		except: pass
 
+	# Cancel if re-feeling not done
+	if refeeling = True:
+		phenny.say("Still re-feeling, please wait.")
+		return
+
 	# Actual feel outputting
 	try:
 		# if parameters are given
@@ -143,10 +148,15 @@ feel.priority = 'low'
 
 def refeel(phenny, input):
 	# If you are not admin
-	if input.admin == False: 
-		# Check your priviledge m8
-		phenny.say("Nice try, check your priviledge.")
+	if input.admin == False: return
+
+	# Cancel if re-feeling
+	if refeeling = True:
+		phenny.say("Already re-feeling!")
 		return
+	# Set refeeling status to be true
+	globals()[refeeling] = True
+	
 	# if parameters are given
 	if input.group(2):
 		# split params and store in array
@@ -165,5 +175,7 @@ def refeel(phenny, input):
 		phenny.say("Loading feels from 4chan/r9k/")
 		globals()["r9k4chanfeels"] = get_feels()
 
+	# Re-feeling done, reset status
+	globals()[refeeling] = False
 refeel.commands = ['re-feel', 'refeel']
 refeel.priority = 'low'

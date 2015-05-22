@@ -110,7 +110,7 @@ def imply(phenny, input):
 		except: pass
 
 	# Cancel if re-feeling not done
-		if refeeling = True:
+		if refeeling == True:
 		phenny.say("Still re-feeling, please wait.")
 		return
 
@@ -149,7 +149,7 @@ def reimply(phenny, input):
 	if input.admin == False: return
 
 	# Cancel if re-feeling
-	if refeeling = True:
+	if refeeling == True:
 		phenny.say("Already re-feeling!")
 		return
 	# Set refeeling status to be true

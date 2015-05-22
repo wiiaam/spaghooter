@@ -100,7 +100,7 @@ def get_implications(board = "g", chan = "4chan"):
 					continue
 				new_implications = find_implications(clean_post)
 				implications += new_implications
-	return implcations
+	return implications
 
 
 

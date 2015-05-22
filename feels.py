@@ -104,6 +104,10 @@ def get_feels(board = "r9k", chan = "4chan"):
 	# feels = unicode(feels, 'utf-8', 'replace')
 	return feels
 
+
+
+	refeeling = False
+
 def feel(phenny, input):
 	# Cancel if timeout hasn't ended yet and ignore exceptions
 	if input.admin == False:

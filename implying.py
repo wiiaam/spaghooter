@@ -102,6 +102,10 @@ def get_implications(board = "g", chan = "4chan"):
 				implications += new_implications
 	return implications
 
+
+
+	refeeling = False
+
 def imply(phenny, input):
 	# Cancel if timeout hasn't ended yet and ignore exceptions
 	if input.admin == False:

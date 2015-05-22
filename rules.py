@@ -1,4 +1,6 @@
 def rules(phenny,input):
+    if input.sender != "#pasta": return
+
     phenny.say("Rule 1: No spamming")
     phenny.say("Rule 2: tag NSFW links")
     phenny.say("Rule 3: All bots must obey IBIP")

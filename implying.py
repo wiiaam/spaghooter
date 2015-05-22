@@ -111,9 +111,9 @@ def imply(phenny, input):
 			if time() < globals().get(input.sender + "timeout") or time() < globals().get(input.nick + "nicktimeout"): return
 		except: pass
 
-	# Cancel if re-feeling not done
+	# Cancel if re-implyinging not done
 	try:
-		if refeeling == True:
+		if reimplying == True:
 			phenny.say("Still re-implying, please wait.")
 			return
 	except: pass
@@ -153,13 +153,13 @@ def reimply(phenny, input):
 	# If you are not admin
 	if input.admin == False: return
 
-	# Cancel if re-feeling
+	# Cancel if re-implyinging
 	try:
-		if refeeling == True:
+		if reimplying == True:
 			phenny.say("Already re-implying!")
 			return
 	except: pass
-	# Set refeeling status to be true
+	# Set reimplying status to be true
 	reimplying = True
 
 	# if parameters are given

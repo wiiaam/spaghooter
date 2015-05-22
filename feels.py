@@ -150,15 +150,17 @@ feel.commands = ['feels', 'feel', 'tfw']
 feel.priority = 'low'
 
 def refeel(phenny, input):
+	global refeeling
 	# If you are not admin
 	if input.admin == False: return
 
-	# Cancel if re-feeling
-	if refeeling == True:
-		phenny.say("Already re-feeling!")
-		return
+	try:
+		if refeeling == True:
+			phenny.say("Already re-feeling!")
+			return
+	except: pass
 	# Set refeeling status to be true
-	globals()[refeeling] = True
+	refeeling = True
 
 	# if parameters are given
 	if input.group(2):
@@ -179,6 +181,6 @@ def refeel(phenny, input):
 		globals()["r9k4chanfeels"] = get_feels()
 
 	# Re-feeling done, reset status
-	globals()[refeeling] = False
+	refeeling = False
 refeel.commands = ['re-feel', 'refeel']
 refeel.priority = 'low'

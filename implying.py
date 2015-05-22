@@ -100,7 +100,7 @@ def get_implications(board = "g", chan = "4chan"):
 					continue
 				new_implications = find_implications(clean_post)
 				implications += new_implications
-	return implications
+	return implcations
 
 
 
@@ -149,13 +149,16 @@ imply.commands = ['imply', 'implying']
 imply.priority = 'low'
 
 def reimply(phenny, input):
+	global reimplying
 	# If you are not admin
 	if input.admin == False: return
 
 	# Cancel if re-feeling
-	if refeeling == True:
-		phenny.say("Already re-implying!")
-		return
+	try:
+		if refeeling == True:
+			phenny.say("Already re-implying!")
+			return
+	except: pass
 	# Set refeeling status to be true
 	reimplying = True
 
@@ -177,5 +180,7 @@ def reimply(phenny, input):
 		phenny.say("Loading implications from 4chan/g/")
 		globals()["r9k4chanimplications"] = get_implications()
 
+		# Re-implying done, reset status
+		reimplying = False
 reimply.commands = ['re-imply', 'reimply']
 reimply.priority = 'low'

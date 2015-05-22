@@ -106,8 +106,8 @@ def get_feels(board = "r9k", chan = "4chan"):
 
 
 
-	refeeling = False
 	global refeeling
+	refeeling = False
 
 def feel(phenny, input):
 	# Cancel if timeout hasn't ended yet and ignore exceptions
@@ -160,7 +160,7 @@ def refeel(phenny, input):
 		phenny.say("Already re-feeling!")
 		return
 	# Set refeeling status to be true
-	refeeling = True
+	globals()[refeeling] = True
 
 	# if parameters are given
 	if input.group(2):
@@ -181,6 +181,6 @@ def refeel(phenny, input):
 		globals()["r9k4chanfeels"] = get_feels()
 
 	# Re-feeling done, reset status
-	refeeling = False
+	globals()[refeeling] = False
 refeel.commands = ['re-feel', 'refeel']
 refeel.priority = 'low'

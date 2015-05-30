@@ -142,8 +142,8 @@ def imply(phenny, input):
 		phenny.say("3>implying there is no error")
 
 	# Set channel and user timeout
-	globals()[input.sender + "timeout"] = time() + 8
-	globals()[input.nick + "nicktimeout"] = time() + 30
+	globals()[input.sender + "timeout"] = time() + 5
+	globals()[input.nick + "nicktimeout"] = time() + 15
 
 imply.commands = ['imply', 'implying']
 imply.priority = 'low'

@@ -51,7 +51,7 @@ freesoftware.priority = 'medium'
 def rekt(phenny, input):
 	rekt = ["#rekt", "REKT", "rekt", "REKTangle", "SHREKT", "REKT-it Ralph", "Total REKTall", "The Lord of the REKT", "The Usual SesREKTs", "North by NorthREKT", "REKT to the Future", "Once Upon a Time in the REKT", "The Good, the Bad, and the REKT", "LawREKT of Arabia", "Tyrannosaurus REKT", "eREKTile dysfunctio "]
 	if input.group(2) > 0:
-		phenny.say(input.group(2)": 4#" + random.choice(rekt))
+		phenny.say(input.group(2) + ": 4#" + random.choice(rekt))
 	else:
 		phenny.say("4#" + random.choice(rekt))
 rekt.commands = ['rekt']

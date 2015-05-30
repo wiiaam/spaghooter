@@ -25,8 +25,7 @@ def banner(phenny, input):
 		text = inputArray[0]
 
 	if len(inputArray) > 1:
-		if inputArray[1] in bannedfonts
-			if
+		if inputArray[1] in bannedfonts:
 			phenny.say("ayy m80 %s is a banned font k?" % inputArray[1])
 			return
 

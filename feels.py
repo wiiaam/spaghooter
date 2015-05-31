@@ -101,8 +101,9 @@ def get_feels(board = "r9k", chan = "4chan"):
 					continue
 				new_feels = find_feels(clean_post)
 				feels += new_feels
-	# feels = unicode(feels, 'utf-8', 'replace')
 	return feels
+
+
 
 def feel(phenny, input):
 	# Cancel if timeout hasn't ended yet and ignore exceptions
@@ -110,6 +111,13 @@ def feel(phenny, input):
 		try:
 			if time() < globals().get(input.sender + "timeout") or time() < globals().get(input.nick + "nicktimeout"): return
 		except: pass
+
+	# Cancel if re-feeling not done
+	try:
+		if refeeling == True:
+			phenny.say("Still re-feeling, please wait.")
+			return
+	except: pass
 
 	# Actual feel outputting
 	try:
@@ -135,18 +143,25 @@ def feel(phenny, input):
 		phenny.say("404 Feel not Found")
 
 	# Set channel and user timeout
-	globals()[input.sender + "timeout"] = time() + 8
-	globals()[input.nick + "nicktimeout"] = time() + 30
+	globals()[input.sender + "timeout"] = time() + 5
+	globals()[input.nick + "nicktimeout"] = time() + 15
 
 feel.commands = ['feels', 'feel', 'tfw']
 feel.priority = 'low'
 
 def refeel(phenny, input):
+	global refeeling
 	# If you are not admin
-	if input.admin == False: 
-		# Check your priviledge m8
-		phenny.say("Nice try, check your priviledge.")
-		return
+	if input.admin == False: return
+
+	try:
+		if refeeling == True:
+			phenny.say("Already re-feeling!")
+			return
+	except: pass
+	# Set refeeling status to be true
+	refeeling = True
+
 	# if parameters are given
 	if input.group(2):
 		# split params and store in array
@@ -165,5 +180,7 @@ def refeel(phenny, input):
 		phenny.say("Loading feels from 4chan/r9k/")
 		globals()["r9k4chanfeels"] = get_feels()
 
+	# Re-feeling done, reset status
+	refeeling = False
 refeel.commands = ['re-feel', 'refeel']
 refeel.priority = 'low'

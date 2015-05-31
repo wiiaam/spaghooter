@@ -102,12 +102,21 @@ def get_implications(board = "g", chan = "4chan"):
 				implications += new_implications
 	return implications
 
+
+
 def imply(phenny, input):
 	# Cancel if timeout hasn't ended yet and ignore exceptions
 	if input.admin == False:
 		try:
 			if time() < globals().get(input.sender + "timeout") or time() < globals().get(input.nick + "nicktimeout"): return
 		except: pass
+
+	# Cancel if re-implyinging not done
+	try:
+		if reimplying == True:
+			phenny.say("Still re-implying, please wait.")
+			return
+	except: pass
 
 	# Actual implication outputting
 	try:
@@ -133,18 +142,26 @@ def imply(phenny, input):
 		phenny.say("3>implying there is no error")
 
 	# Set channel and user timeout
-	globals()[input.sender + "timeout"] = time() + 8
-	globals()[input.nick + "nicktimeout"] = time() + 30
+	globals()[input.sender + "timeout"] = time() + 5
+	globals()[input.nick + "nicktimeout"] = time() + 15
 
 imply.commands = ['imply', 'implying']
 imply.priority = 'low'
 
 def reimply(phenny, input):
+	global reimplying
 	# If you are not admin
-	if input.admin == False: 
-		# Check your priviledge m8
-		phenny.say("Nice try, check your priviledge.")
-		return
+	if input.admin == False: return
+
+	# Cancel if re-implyinging
+	try:
+		if reimplying == True:
+			phenny.say("Already re-implying!")
+			return
+	except: pass
+	# Set reimplying status to be true
+	reimplying = True
+
 	# if parameters are given
 	if input.group(2):
 		# split params and store in array
@@ -163,5 +180,7 @@ def reimply(phenny, input):
 		phenny.say("Loading implications from 4chan/g/")
 		globals()["r9k4chanimplications"] = get_implications()
 
+		# Re-implying done, reset status
+		reimplying = False
 reimply.commands = ['re-imply', 'reimply']
 reimply.priority = 'low'
